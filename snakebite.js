@@ -51,12 +51,14 @@ function weOverlap(r1, r2) {
 // (left+right) divided by two.  since we have this for both r1 and r2, we don't 
 // bother doing the division, although it makes the number on the far right bigger.
 //
+var hitRadius = 13;
+
 function weOverlap(r1, r2) { 
     var r1_center_x = (r1.left+r1.right)/2;
     var r2_center_x = (r2.left+r2.right)/2;
     if (
-        Math.abs(r1_center_x - r2_center_x) <= 10 &&
-        Math.abs((r1.top+r1.bottom)-(r2.top+r2.bottom)) <= 20  
+        Math.abs(r1_center_x - r2_center_x) <= hitRadius &&
+        Math.abs((r1.top+r1.bottom)-(r2.top+r2.bottom)) <= hitRadius*2  
         ) {
         return true;
     }
