@@ -2,6 +2,10 @@
 
 var x = 2;
 
+// we will run myTimer function ever so many milliseconds to do things
+var timerInterval = 800; // milliseconds
+var timer = setInterval(myTimer, timerInterval);
+
 // which way are we moving?
 var directionX = 0;
 var directionY = -1;
@@ -11,7 +15,7 @@ var playing = false;
 
 var score = 0;
 var nBalls = 6;
-var MaxBalls = 16;
+var MaxBalls = 24;
 var ballDiameter = 20;
 
 var balls = document.getElementsByTagName("circle");
@@ -86,12 +90,9 @@ function checkBounds() {
         }
     }
 
-    // hit cat?
-    console.log(nCats);
+    // hit cat / creature?
     for( i = 0; i < nCats; i++ ) { 
         var catRect = cats[i].getBoundingClientRect();
-        console.log(catRect);
-        console.log(ourPos);
         if( weOverlap(ourPos, catRect) ) { 
             gameOver("Drats. ");
             return false;
@@ -179,26 +180,36 @@ var endSound = new Howl({
       urls: ['gameover.mp3']
     });
 
-// we will run myTimer function ever so many milliseconds to do things
-setInterval(myTimer, 1000);
 
 var z = 0;
 var interval = 4;
 
 function addBall() { 
-    if( nBalls < MaxBalls ) {
-        z = 0;
-        interval++;
-        //ballsPositionX[nBalls] = ballsPositionX[nBalls-1];
-        //ballsPositionY[nBalls] = ballsPositionY[nBalls-1];
-        nBalls++;
+    if( Math.random() < 0.8 ) { 
+        console.log("addball " + nBalls + ' ' + MaxBalls);
+        if( nBalls < MaxBalls ) {
+            //ballsPositionX[nBalls] = ballsPositionX[nBalls-1];
+            //ballsPositionY[nBalls] = ballsPositionY[nBalls-1];
+            nBalls++;
+        }
     }
+    else {
+        console.log("addball move faster");
+        // move faster
+        if( timerInterval > 300 ) { 
+            timerInterval *= .9;
+        }
+        clearInterval(timer);
+        timer = setInterval(myTimer, timerInterval);
+    }
+    z = 0;
+//    interval += 0.02;
 }
 
 function move() { 
-    if( ++z % interval == 0 ) { 
+    if( ++z >= interval ) { 
         addBall();
-        //score += 10;
+        score += 2;
     }
 
     for( i = nBalls-1; i >= 1; i--) {
