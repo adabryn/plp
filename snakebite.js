@@ -2,6 +2,8 @@
 
 var x = 2;
 
+var SZ = 100;
+
 // we will run myTimer function ever so many milliseconds to do things
 var timerInterval = 800; // milliseconds
 var timer = setInterval(myTimer, timerInterval);
@@ -184,8 +186,21 @@ var endSound = new Howl({
 var z = 0;
 var interval = 4;
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function moveACat() { 
+    var cati = 0;// getRandomInt(0, nCats);
+    var cat = cats[cati];
+    console.log("movecat " + cati);
+    var speed = getRandomInt(3,15);
+    TweenLite.to( cat, speed, {x:getRandomInt(0,400), y:getRandomInt(0,400), overwrite:"all"} );
+}
+
 function addBall() { 
-    if( Math.random() < 0.8 ) { 
+    moveACat();
+    if( Math.random() < 0.7 ) { 
         console.log("addball " + nBalls + ' ' + MaxBalls);
         if( nBalls < MaxBalls ) {
             //ballsPositionX[nBalls] = ballsPositionX[nBalls-1];
