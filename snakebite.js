@@ -52,9 +52,11 @@ function weOverlap(r1, r2) {
 // bother doing the division, although it makes the number on the far right bigger.
 //
 function weOverlap(r1, r2) { 
+    var r1_center_x = (r1.left+r1.right)/2;
+    var r2_center_x = (r2.left+r2.right)/2;
     if (
-        Math.abs(r1.left+r1.right)-(r2.left+r2.right) <= 20 &&
-        Math.abs(r1.top+r1.bottom)-(r2.top+r2.bottom) <= 20  
+        Math.abs(r1_center_x - r2_center_x) <= 10 &&
+        Math.abs((r1.top+r1.bottom)-(r2.top+r2.bottom)) <= 20  
         ) {
         return true;
     }
@@ -87,7 +89,7 @@ function checkBounds() {
     for( i = 0; i < nCats; i++ ) { 
         var catRect = cats[i].getBoundingClientRect();
         console.log(catRect);
-    console.log(ourPos);
+        console.log(ourPos);
         if( weOverlap(ourPos, catRect) ) { 
             gameOver("Drats. ");
             return false;
