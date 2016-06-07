@@ -1,0 +1,53 @@
+
+<!DOCTYPE HTML>
+<html >
+<head>
+    <meta charset="UTF-8">
+
+<!--    <link href="styles.css" rel="stylesheet">-->
+
+</head>
+
+
+<body>
+    <div >
+        <header>
+            <h1>
+                Blah</h1>
+            <ul>
+                <li><a href="#gameZone" id="newGame">New game</a></li>
+            </ul>
+        </header>
+
+
+        <div id="gameZone">
+            <canvas id="backgroundCanvas">
+                Your browser doesn't support HTML5. 
+                <br />
+            </canvas>
+
+            <svg id="svgRoot">
+                <circle cx="100" cy="100" r="10" id="ball" />
+                <rect id="pad" height="15px" width="150px" x="200" y="200" rx="10" ry="20"/>
+            </svg>
+
+            <div id="stats">
+            </div>
+
+            <div id="message">a message</div>
+        </div>
+
+        <footer>
+           hi
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="game.js"></script>
+
+    <!--
+    <script type="text/javascript" src="mouse.js"></script>
+    
+    <script type="text/javascript" src="game.js"></script>
+    -->
+</body>
+</html>

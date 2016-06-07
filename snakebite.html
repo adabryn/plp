@@ -1,0 +1,41 @@
+<html>
+
+<body>
+
+    <h1><center>SnakeBite!</center></h1>
+
+    <div id="gameZone" align="center">
+
+            <div>
+            <p id="info"></p>
+            </div>
+
+            <svg id="svgRoot" width="500" height="500">
+
+                // this is the playing field
+                <rect width="500" height="500" style="fill:#D9937C;" />
+
+                <circle fill=#00cf00 cx="100" cy="-100" r="10" id="head" />
+                <circle fill=#009000 cx="100" cy="-100" r="10" />
+                <circle fill="green" cx="100" cy="-100" r="10" />
+                <circle fill="green" cx="100" cy="-100" r="10" />
+                <circle fill="green" cx="100" cy="-100" r="10" />
+                <circle fill="green" cx="100" cy="-100" r="10" />
+
+            </svg>
+
+            <div><p>
+            Score: <span id="score">
+            </span></p></div>
+
+        </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<script src="howler.js"></script>
+
+<script type="text/javascript" src="snakebite.js"></script>
+
+</body>
+
+</html>
